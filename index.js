@@ -154,5 +154,25 @@ app.post('/api/leave-config', async (req, res) => {
   }
 });
 
+// API: Get welcome config for a guild
+app.get('/api/welcome-config/:guildId', async (req, res) => {
+  try {
+    const config = await WelcomeConfig.findOne({ guildId: req.params.guildId });
+    res.json({ config });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// API: Get leave config for a guild
+app.get('/api/leave-config/:guildId', async (req, res) => {
+  try {
+    const config = await LeaveConfig.findOne({ guildId: req.params.guildId });
+    res.json({ config });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Dashboard running on http://localhost:${PORT}`));

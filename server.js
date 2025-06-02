@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       welcomeChannelSelect.selectedIndex = -1;
       welcomeChannelSelect.innerHTML = '<option selected disabled>Select channel</option>' +
         channels.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+      loadWelcomeConfig();
     } else {
       notification.textContent = 'Failed to save configuration.';
       notification.style.display = 'block';
@@ -167,6 +168,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       leaveChannelSelect.selectedIndex = -1;
       leaveChannelSelect.innerHTML = '<option selected disabled>Select channel</option>' +
         channels.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+      loadLeaveConfig();
     } else {
       notification.textContent = 'Failed to save configuration.';
       notification.style.display = 'block';
@@ -174,4 +176,44 @@ document.addEventListener('DOMContentLoaded', async () => {
       setTimeout(() => { notification.style.display = 'none'; notification.style.background = '#43b581'; }, 2500);
     }
   });
+
+  // Fetch and display current welcome/leave config
+  const currentWelcomeConfigDiv = document.getElementById('currentWelcomeConfig');
+  const currentLeaveConfigDiv = document.getElementById('currentLeaveConfig');
+
+  async function loadWelcomeConfig() {
+    currentWelcomeConfigDiv.style.display = 'none';
+    const res = await fetch(`/api/welcome-config/${guildId}`);
+    const data = await res.json();
+    if (data.config) {
+      const channelName = channels.find(c => c.id === data.config.channelId)?.name || 'Unknown';
+      currentWelcomeConfigDiv.innerHTML = `<b>Current Channel:</b> #${channelName}<br><b>Message:</b> <span style='white-space:pre-line;'>${data.config.message}</span>`;
+      currentWelcomeConfigDiv.style.display = 'block';
+    } else {
+      currentWelcomeConfigDiv.innerHTML = '<i>No welcome configuration set.</i>';
+      currentWelcomeConfigDiv.style.display = 'block';
+    }
+  }
+
+  async function loadLeaveConfig() {
+    currentLeaveConfigDiv.style.display = 'none';
+    const res = await fetch(`/api/leave-config/${guildId}`);
+    const data = await res.json();
+    if (data.config) {
+      const channelName = channels.find(c => c.id === data.config.channelId)?.name || 'Unknown';
+      currentLeaveConfigDiv.innerHTML = `<b>Current Channel:</b> #${channelName}<br><b>Message:</b> <span style='white-space:pre-line;'>${data.config.message}</span>`;
+      currentLeaveConfigDiv.style.display = 'block';
+    } else {
+      currentLeaveConfigDiv.innerHTML = '<i>No leave configuration set.</i>';
+      currentLeaveConfigDiv.style.display = 'block';
+    }
+  }
+
+  // Load configs on section switch
+  welcomeBtn.addEventListener('click', loadWelcomeConfig);
+  leaveBtn.addEventListener('click', loadLeaveConfig);
+
+  // Also load on page load if section is visible
+  if (welcomeSection.style.display !== 'none') loadWelcomeConfig();
+  if (leaveSection.style.display !== 'none') loadLeaveConfig();
 });
