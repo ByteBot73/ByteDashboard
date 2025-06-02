@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const inviteBtn = document.getElementById('inviteBtn');
 
   // Fetch user info
-  const res = await fetch('/api/user');
+  const res = await fetch('api/user');
   const data = await res.json();
   if (data.user) {
     loginBtn.style.display = 'none';
@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Logout
   logoutBtn.addEventListener('click', () => {
-    window.location.href = '/logout';
+    window.location.href = 'logout';
   });
 
   // Invite button
   inviteBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/invite');
+    const res = await fetch('api/invite');
     const data = await res.json();
     window.open(data.invite, '_blank');
   });

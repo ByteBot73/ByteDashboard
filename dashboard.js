@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const guildList = document.getElementById('guildList');
 
   // Fetch user info
-  const userRes = await fetch('/api/user');
+  const userRes = await fetch('api/user');
   const userData = await userRes.json();
   if (userData.user) {
     userAvatar.src = userData.user.avatar ? `https://cdn.discordapp.com/avatars/${userData.user.id}/${userData.user.avatar}.png` : '/default-avatar.png';
@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = '/logout';
+    window.location.href = 'logout';
   });
 
   // Fetch user guilds (only owner)
-  const res = await fetch('/api/guilds');
+  const res = await fetch('api/guilds');
   const data = await res.json();
   guildList.innerHTML = '';
   if (data.guilds && data.guilds.length) {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         btn.textContent = 'Add to Server';
         btn.onclick = async () => {
-          fetch('/api/invite').then(r => r.json()).then(invite => {
+          fetch('api/invite').then(r => r.json()).then(invite => {
             window.open(invite.invite + `&guild_id=${guild.id}&disable_guild_select=true`, '_blank');
             // Poll for bot presence and update button
             const poll = setInterval(async () => {
