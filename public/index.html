@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Bot Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🤖 Discord Bot Dashboard</div>
+    <div class="header-buttons" id="headerButtons">
+      <a href="#" id="inviteBtn" class="btn">Invite Bot</a>
+      <a href="/dashboard.html" class="btn">Dashboard</a>
+      <a href="/login" id="loginBtn" class="btn">Login with Discord</a>
+      <img src="/default-avatar.png" id="userAvatar" class="avatar" style="display:none;">
+      <div class="dropdown" id="dropdownMenu" style="display:none;">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="home">
+      <h1>Welcome to the Discord Bot Dashboard!</h1>
+      <p>Manage your servers, test the bot, and more.</p>
+      <div class="bot-info">
+        <h2>About the Bot</h2>
+        <p>This bot helps you manage your Discord servers with ease. Use the dashboard to configure features and test the bot in your channels.</p>
+      </div>
+    </section>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

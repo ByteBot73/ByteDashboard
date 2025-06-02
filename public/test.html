@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Bot - Discord Bot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🤖 Discord Bot Dashboard</div>
+    <div class="user-menu" id="userMenu">
+      <img src="/default-avatar.png" id="userAvatar" class="avatar" style="display:none;">
+      <div class="dropdown" id="dropdownMenu" style="display:none;">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <a href="/dashboard.html" class="sidebar-btn">Back to Dashboard</a>
+      <a href="#" class="sidebar-btn active">Test</a>
+    </aside>
+    <section class="test-section">
+      <h1>Test the Bot</h1>
+      <form id="testForm">
+        <label for="channelSelect">Select Channel:</label>
+        <select id="channelSelect" required></select>
+        <label for="testMessage">Message:</label>
+        <textarea id="testMessage" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </section>
+    <div id="notification" class="notification" style="display:none;"></div>
+  </main>
+  <script src="test.js"></script>
+</body>
+</html>

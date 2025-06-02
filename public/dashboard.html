@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Byte</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Byte Dashboard</div>
+    <div class="user-menu" id="userMenu">
+      <img src="/default-avatar.png" id="userAvatar" class="avatar" style="display:none;">
+      <div class="dropdown" id="dropdownMenu" style="display:none;">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="dashboard">
+      <h1>Your Servers</h1>
+      <div id="guildList" class="guild-list"></div>
+    </section>
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>

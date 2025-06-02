@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configure Server - Discord Bot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🤖 Discord Bot Dashboard</div>
+    <div class="header-buttons" id="headerButtons">
+      <a href="/dashboard.html" class="btn">Dashboard</a>
+      <img src="/default-avatar.png" id="userAvatar" class="avatar" style="display:none;">
+      <div class="dropdown" id="dropdownMenu" style="display:none;">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <a href="#" class="sidebar-btn active" id="testBtn">Test</a>
+      <a href="#" class="sidebar-btn" id="welcomeBtn">Welcome Channel</a>
+      <a href="#" class="sidebar-btn" id="leaveBtn">Leave Message</a>
+    </aside>
+    <section class="test-section" id="testSection">
+      <h1>Test the Bot</h1>
+      <form id="testForm">
+        <label for="channelSelect">Select Channel:</label>
+        <select id="channelSelect" required></select>
+        <label for="testMessage">Message:</label>
+        <textarea id="testMessage" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </section>
+    <section class="config-section" id="welcomeSection" style="display:none;">
+      <h1>Welcome Channel Configuration</h1>
+      <form id="configForm">
+        <label for="welcomeChannelSelect">Select Channel:</label>
+        <select id="welcomeChannelSelect" required></select>
+        <label for="welcomeMessage">Welcome Message:</label>
+        <textarea id="welcomeMessage" required></textarea>
+        <button type="submit" class="btn">Save Configuration</button>
+      </form>
+    </section>
+    <section class="config-section" id="leaveSection" style="display:none;">
+      <h1>Leave Message Configuration</h1>
+      <form id="leaveForm">
+        <label for="leaveChannelSelect">Select Channel:</label>
+        <select id="leaveChannelSelect" required></select>
+        <label for="leaveMessage">Leave Message:</label>
+        <textarea id="leaveMessage" required></textarea>
+        <button type="submit" class="btn">Save Configuration</button>
+      </form>
+    </section>
+    <div id="notification" class="notification" style="display:none;"></div>
+  </main>
+  <script src="server.js"></script>
+</body>
+</html>
