@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const guildList = document.getElementById('guildList');
 
   // Fetch user info
-  const userRes = await fetch('https://your-backend-url.onrender.com/api/user', { credentials: 'include' });
+  const userRes = await fetch('https://the-new-dashboard-backend.onrender.com/api/user', { credentials: 'include' });
   const userData = await userRes.json();
   if (userData.user) {
     userAvatar.src = userData.user.avatar ? `https://cdn.discordapp.com/avatars/${userData.user.id}/${userData.user.avatar}.png` : '/default-avatar.png';
@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'https://your-backend-url.onrender.com/logout';
+    window.location.href = 'https://the-new-dashboard-backend.onrender.com/logout';
   });
 
   // Fetch user guilds (only owner)
-  const res = await fetch('https://your-backend-url.onrender.com/api/guilds', { credentials: 'include' });
+  const res = await fetch('https://the-new-dashboard-backend.onrender.com/api/guilds', { credentials: 'include' });
   const data = await res.json();
   guildList.innerHTML = '';
   if (data.guilds && data.guilds.length) {
@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         btn.textContent = 'Add to Server';
         btn.onclick = async () => {
-          fetch('https://your-backend-url.onrender.com/api/invite').then(r => r.json()).then(invite => {
+          fetch('https://the-new-dashboard-backend.onrender.com/api/invite').then(r => r.json()).then(invite => {
             window.open(invite.invite + `&guild_id=${guild.id}&disable_guild_select=true`, '_blank');
             // Poll for bot presence and update button
             const poll = setInterval(async () => {
-              const guildsRes = await fetch('https://your-backend-url.onrender.com/api/guilds', { credentials: 'include' });
+              const guildsRes = await fetch('https://the-new-dashboard-backend.onrender.com/api/guilds', { credentials: 'include' });
               const guildsData = await guildsRes.json();
               const updated = guildsData.guilds.find(g => g.id === guild.id);
               if (updated && updated.botInGuild) {

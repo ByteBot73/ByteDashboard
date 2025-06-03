@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const inviteBtn = document.getElementById('inviteBtn');
 
   // Fetch user info
-  const res = await fetch('https://your-backend-url.onrender.com/api/user', { credentials: 'include' });
+  const res = await fetch('https://the-new-dashboard-backend.onrender.com/api/user', { credentials: 'include' });
   const data = await res.json();
   if (data.user) {
     loginBtn.style.display = 'none';
@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Logout
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'https://your-backend-url.onrender.com/logout';
+    window.location.href = 'https://the-new-dashboard-backend.onrender.com/logout';
   });
 
   // Invite button
   inviteBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    const res = await fetch('https://your-backend-url.onrender.com/api/invite');
+    const res = await fetch('https://the-new-dashboard-backend.onrender.com/api/invite');
     const data = await res.json();
     window.open(data.invite, '_blank');
   });

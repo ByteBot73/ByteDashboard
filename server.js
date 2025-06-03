@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const leaveForm = document.getElementById('leaveForm');
 
   // User info
-  const userRes = await fetch('https://your-backend-url.onrender.com/api/user', { credentials: 'include' });
+  const userRes = await fetch('https://the-new-dashboard-backend.onrender.com/api/user', { credentials: 'include' });
   const userData = await userRes.json();
   if (userData.user) {
     userAvatar.src = userData.user.avatar ? `https://cdn.discordapp.com/avatars/${userData.user.id}/${userData.user.avatar}.png` : '/default-avatar.png';
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'https://your-backend-url.onrender.com/logout';
+    window.location.href = 'https://the-new-dashboard-backend.onrender.com/logout';
   });
 
   // Get guild id from URL
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Fetch channels for this guild
-  const resChannels = await fetch(`https://your-backend-url.onrender.com/api/guild/${guildId}/channels`);
+  const resChannels = await fetch(`https://the-new-dashboard-backend.onrender.com/api/guild/${guildId}/channels`);
   const dataChannels = await resChannels.json();
   const channels = (dataChannels.channels || []).filter(c => c.type === 0); // Only text channels
   // Populate both dropdowns with the same channels
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const channelId = channelSelect.value;
     const message = document.getElementById('testMessage').value;
-    const res = await fetch('https://your-backend-url.onrender.com/api/send', {
+    const res = await fetch('https://the-new-dashboard-backend.onrender.com/api/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guildId, channelId, message })
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const channelId = welcomeChannelSelect.value;
     const message = document.getElementById('welcomeMessage').value;
-    const res = await fetch('https://your-backend-url.onrender.com/api/welcome-config', {
+    const res = await fetch('https://the-new-dashboard-backend.onrender.com/api/welcome-config', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guildId, channelId, message })
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const channelId = leaveChannelSelect.value;
     const message = document.getElementById('leaveMessage').value;
-    const res = await fetch('https://your-backend-url.onrender.com/api/leave-config', {
+    const res = await fetch('https://the-new-dashboard-backend.onrender.com/api/leave-config', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guildId, channelId, message })
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function loadWelcomeConfig() {
     currentWelcomeConfigDiv.style.display = 'none';
-    const res = await fetch(`https://your-backend-url.onrender.com/api/welcome-config/${guildId}`);
+    const res = await fetch(`https://the-new-dashboard-backend.onrender.com/api/welcome-config/${guildId}`);
     const data = await res.json();
     if (data.config) {
       const channelName = channels.find(c => c.id === data.config.channelId)?.name || 'Unknown';
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function loadLeaveConfig() {
     currentLeaveConfigDiv.style.display = 'none';
-    const res = await fetch(`https://your-backend-url.onrender.com/api/leave-config/${guildId}`);
+    const res = await fetch(`https://the-new-dashboard-backend.onrender.com/api/leave-config/${guildId}`);
     const data = await res.json();
     if (data.config) {
       const channelName = channels.find(c => c.id === data.config.channelId)?.name || 'Unknown';
