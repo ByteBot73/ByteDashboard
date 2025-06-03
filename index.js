@@ -167,6 +167,9 @@ app.get('/api/leave-config/:guildId', async (req, res) => {
   }
 });
 
+// Root route for debugging
+app.get('/', (req, res) => res.send('Backend is running'));
+
 // Serve static files (only for frontend assets, must be last)
 app.use(express.static(__dirname));
 
