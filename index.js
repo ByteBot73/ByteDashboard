@@ -18,10 +18,18 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 app.use(express.json());
+
+// Trust proxy for correct secure cookies on Render/Heroku
+app.set('trust proxy', 1);
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'supersecret',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production', // true in production (HTTPS)
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
