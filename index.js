@@ -38,9 +38,6 @@ passport.use(new DiscordStrategy({
   process.nextTick(() => done(null, profile));
 }));
 
-// Serve static files (for local dev, not needed on Render)
-app.use(express.static(__dirname));
-
 // Auth routes
 app.get('/login', passport.authenticate('discord'));
 app.get('/callback', passport.authenticate('discord', { failureRedirect: '/' }), (req, res) => {
@@ -51,6 +48,9 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
   });
 });
+
+// Serve static files (only for frontend assets)
+app.use(express.static(__dirname));
 
 // API: Get user info
 app.get('/api/user', (req, res) => {
