@@ -49,9 +49,6 @@ app.get('/logout', (req, res) => {
   });
 });
 
-// Serve static files (only for frontend assets)
-app.use(express.static(__dirname));
-
 // API: Get user info
 app.get('/api/user', (req, res) => {
   if (!req.isAuthenticated()) return res.json({ user: null });
@@ -169,6 +166,9 @@ app.get('/api/leave-config/:guildId', async (req, res) => {
     res.json({ config: null });
   }
 });
+
+// Serve static files (only for frontend assets, must be last)
+app.use(express.static(__dirname));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Dashboard running on http://localhost:${PORT}`));
