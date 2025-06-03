@@ -41,6 +41,7 @@ passport.use(new DiscordStrategy({
 // Auth routes
 app.get('/login', passport.authenticate('discord'));
 app.get('/callback', passport.authenticate('discord', { failureRedirect: '/' }), (req, res) => {
+  console.log('Callback route hit!');
   res.redirect('/dashboard.html');
 });
 app.get('/logout', (req, res) => {
