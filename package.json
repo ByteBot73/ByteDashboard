@@ -1,16 +1,29 @@
 {
-  "name": "discord-bot-dashboard",
+  "name": "6",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ByteBot73/TheNewDashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ByteBot73/TheNewDashboard/issues"
+  },
+  "homepage": "https://github.com/ByteBot73/TheNewDashboard#readme",
+  "description": "",
   "dependencies": {
-    "axios": "^1.6.7",
+    "axios": "^1.9.0",
     "discord.js": "^14.19.3",
-    "dotenv": "^16.4.5",
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "mongoose": "^8.15.1",
     "passport": "^0.7.0",
     "passport-discord": "^0.1.4"

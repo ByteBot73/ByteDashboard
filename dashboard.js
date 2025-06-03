@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const guildList = document.getElementById('guildList');
 
   // Fetch user info
-  const userRes = await fetch('api/user');
+  const userRes = await fetch('https://your-backend-url.onrender.com/api/user', { credentials: 'include' });
   const userData = await userRes.json();
   if (userData.user) {
     userAvatar.src = userData.user.avatar ? `https://cdn.discordapp.com/avatars/${userData.user.id}/${userData.user.avatar}.png` : '/default-avatar.png';
@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'logout';
+    window.location.href = 'https://your-backend-url.onrender.com/logout';
   });
 
   // Fetch user guilds (only owner)
-  const res = await fetch('api/guilds');
+  const res = await fetch('https://your-backend-url.onrender.com/api/guilds', { credentials: 'include' });
   const data = await res.json();
   guildList.innerHTML = '';
   if (data.guilds && data.guilds.length) {
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         <button class="btn guild-btn">${guild.botInGuild ? 'Configure Server' : 'Add to Server'}</button>
       `;
       const btn = card.querySelector('.guild-btn');
-      // Always set up click handler after rendering
       btn.onclick = null;
       if (guild.botInGuild) {
         btn.textContent = 'Configure Server';
@@ -51,11 +50,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         btn.textContent = 'Add to Server';
         btn.onclick = async () => {
-          fetch('api/invite').then(r => r.json()).then(invite => {
+          fetch('https://your-backend-url.onrender.com/api/invite').then(r => r.json()).then(invite => {
             window.open(invite.invite + `&guild_id=${guild.id}&disable_guild_select=true`, '_blank');
             // Poll for bot presence and update button
             const poll = setInterval(async () => {
-              const guildsRes = await fetch('/api/guilds');
+              const guildsRes = await fetch('https://your-backend-url.onrender.com/api/guilds', { credentials: 'include' });
               const guildsData = await guildsRes.json();
               const updated = guildsData.guilds.find(g => g.id === guild.id);
               if (updated && updated.botInGuild) {

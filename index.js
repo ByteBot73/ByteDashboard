@@ -1,30 +1,28 @@
+// index.js - Express backend for Discord bot dashboard
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const axios = require('axios');
-const path = require('path');
 const mongoose = require('mongoose');
-const WelcomeConfig = require('./schemas/welcomeConfig');
-const LeaveConfig = require('./schemas/leaveConfig');
+const WelcomeConfig = require('./welcomeConfig');
+const LeaveConfig = require('./leaveConfig');
 
 const app = express();
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://ByteDatabase:VNlc3bn9PaHg0dRp@bytedatabase.86e4oyx.mongodb.net/', {
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
-// Session setup
+app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'supersecret',
   resave: false,
   saveUninitialized: false
 }));
-
-// Passport setup
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -40,7 +38,7 @@ passport.use(new DiscordStrategy({
   process.nextTick(() => done(null, profile));
 }));
 
-// Static files
+// Serve static files (for local dev, not needed on Render)
 app.use(express.static(__dirname));
 
 // Auth routes
@@ -89,12 +87,10 @@ app.get('/api/invite', (req, res) => {
   res.json({ invite });
 });
 
-// API: Send message to channel (dummy, to be implemented with bot token)
-app.use(express.json());
+// API: Send message to channel (requires bot in server)
 app.post('/api/send', async (req, res) => {
   const { guildId, channelId, message } = req.body;
   try {
-    // Use discord.js to send the message
     const { Client, GatewayIntentBits } = require('discord.js');
     if (!global._dashboardBotClient) {
       const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
@@ -111,7 +107,7 @@ app.post('/api/send', async (req, res) => {
   }
 });
 
-// API: Get channels for a guild (real Discord API)
+// API: Get channels for a guild
 app.get('/api/guild/:guildId/channels', async (req, res) => {
   try {
     const { guildId } = req.params;
@@ -124,7 +120,7 @@ app.get('/api/guild/:guildId/channels', async (req, res) => {
   }
 });
 
-// API: Save welcome channel configuration
+// API: Save welcome config
 app.post('/api/welcome-config', async (req, res) => {
   const { guildId, channelId, message } = req.body;
   try {
@@ -139,7 +135,7 @@ app.post('/api/welcome-config', async (req, res) => {
   }
 });
 
-// API: Save leave channel configuration
+// API: Save leave config
 app.post('/api/leave-config', async (req, res) => {
   const { guildId, channelId, message } = req.body;
   try {
@@ -160,7 +156,7 @@ app.get('/api/welcome-config/:guildId', async (req, res) => {
     const config = await WelcomeConfig.findOne({ guildId: req.params.guildId });
     res.json({ config });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.json({ config: null });
   }
 });
 
@@ -170,7 +166,7 @@ app.get('/api/leave-config/:guildId', async (req, res) => {
     const config = await LeaveConfig.findOne({ guildId: req.params.guildId });
     res.json({ config });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.json({ config: null });
   }
 });
 

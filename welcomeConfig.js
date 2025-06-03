@@ -1,4 +1,3 @@
-// schemas/welcomeConfig.js
 const mongoose = require('mongoose');
 
 const welcomeConfigSchema = new mongoose.Schema({

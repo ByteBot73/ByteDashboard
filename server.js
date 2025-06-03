@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const leaveForm = document.getElementById('leaveForm');
 
   // User info
-  const userRes = await fetch('api/user');
+  const userRes = await fetch('https://your-backend-url.onrender.com/api/user', { credentials: 'include' });
   const userData = await userRes.json();
   if (userData.user) {
     userAvatar.src = userData.user.avatar ? `https://cdn.discordapp.com/avatars/${userData.user.id}/${userData.user.avatar}.png` : '/default-avatar.png';
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'logout';
+    window.location.href = 'https://your-backend-url.onrender.com/logout';
   });
 
   // Get guild id from URL
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Fetch channels for this guild (real API call)
-  const resChannels = await fetch(`api/guild/${guildId}/channels`);
+  // Fetch channels for this guild
+  const resChannels = await fetch(`https://your-backend-url.onrender.com/api/guild/${guildId}/channels`);
   const dataChannels = await resChannels.json();
   const channels = (dataChannels.channels || []).filter(c => c.type === 0); // Only text channels
   // Populate both dropdowns with the same channels
@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     testSection.style.display = 'none';
     welcomeSection.style.display = '';
     leaveSection.style.display = 'none';
+    loadWelcomeConfig();
   });
   leaveBtn.addEventListener('click', () => {
     testBtn.classList.remove('active');
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     testSection.style.display = 'none';
     welcomeSection.style.display = 'none';
     leaveSection.style.display = '';
+    loadLeaveConfig();
   });
 
   // Handle form submit
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const channelId = channelSelect.value;
     const message = document.getElementById('testMessage').value;
-    const res = await fetch('api/send', {
+    const res = await fetch('https://your-backend-url.onrender.com/api/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guildId, channelId, message })
@@ -104,7 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       notification.style.display = 'block';
       setTimeout(() => { notification.style.display = 'none'; }, 2500);
       testForm.reset();
-      // Reset dropdown to default option
       channelSelect.selectedIndex = -1;
       channelSelect.innerHTML = '<option selected disabled>Select channel</option>' +
         channels.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const channelId = welcomeChannelSelect.value;
     const message = document.getElementById('welcomeMessage').value;
-    const res = await fetch('api/welcome-config', {
+    const res = await fetch('https://your-backend-url.onrender.com/api/welcome-config', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guildId, channelId, message })
@@ -154,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const channelId = leaveChannelSelect.value;
     const message = document.getElementById('leaveMessage').value;
-    const res = await fetch('api/leave-config', {
+    const res = await fetch('https://your-backend-url.onrender.com/api/leave-config', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guildId, channelId, message })
@@ -183,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function loadWelcomeConfig() {
     currentWelcomeConfigDiv.style.display = 'none';
-    const res = await fetch(`/api/welcome-config/${guildId}`);
+    const res = await fetch(`https://your-backend-url.onrender.com/api/welcome-config/${guildId}`);
     const data = await res.json();
     if (data.config) {
       const channelName = channels.find(c => c.id === data.config.channelId)?.name || 'Unknown';
@@ -197,7 +198,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function loadLeaveConfig() {
     currentLeaveConfigDiv.style.display = 'none';
-    const res = await fetch(`/api/leave-config/${guildId}`);
+    const res = await fetch(`https://your-backend-url.onrender.com/api/leave-config/${guildId}`);
     const data = await res.json();
     if (data.config) {
       const channelName = channels.find(c => c.id === data.config.channelId)?.name || 'Unknown';
