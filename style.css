@@ -161,16 +161,15 @@ header {
   cursor: pointer;
   transition: background 0.15s;
   position: relative;
+  background: #40444b; /* light gray for unselected */
 }
 .sidebar li.active, .sidebar li:active {
-  background: #2ecc40;
+  background: #36393F;
   color: #fff;
 }
-.sidebar li .sidebar-icon {
-  margin-right: 12px;
-  font-size: 18px;
-  width: 22px;
-  text-align: center;
+.sidebar li:hover:not(.active) {
+  background: #7EC34C; /* green highlight on hover */
+  color: #23272a;
 }
 .sidebar .sidebar-collapsible {
   cursor: pointer;
@@ -249,8 +248,8 @@ main {
   transition: background 0.2s, color 0.2s;
 }
 #testForm button:hover, #configForm button:hover, #leaveForm button:hover {
-  background: #a8ff60;
-  color: #23272a;
+  background: #36393F;
+  color: #fff;
 }
 .notification {
   position: fixed;
@@ -329,7 +328,7 @@ main {
   }
   .sidebar-btn.active, .sidebar-btn:hover {
     border-left: none;
-    border-bottom: 3px solid #a8ff60;
+    border-bottom: 3px solid #36393F;
   }
   .test-section, .config-section {
     margin-left: 0;
