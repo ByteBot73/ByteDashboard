@@ -2,14 +2,14 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  background: #16281d; /* dark green background */
-  color: #eaffd0; /* light lime text */
+  background: #23272a; /* light black/grey background */
+  color: #eaffd0;
 }
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1e3a24; /* darker green */
+  background: #23272a; /* match body for banner */
   padding: 1rem 2rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -17,7 +17,7 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #a8ff60;
+  color: #7EC34C;
 }
 .user-menu, .header-buttons {
   position: relative;
@@ -30,14 +30,14 @@ header {
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #a8ff60;
+  border: 2px solid #7EC34C;
 }
 .dropdown {
   position: absolute;
   right: 0;
   top: 50px;
   background: #16281d;
-  border: 1px solid #a8ff60;
+  border: 1px solid #7EC34C;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   z-index: 10;
@@ -45,7 +45,7 @@ header {
 }
 .dropdown button, .dropdown .btn {
   background: #1e3a24;
-  color: #a8ff60;
+  color: #7EC34C;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -61,8 +61,8 @@ header {
   color: #0e1a11;
 }
 .btn {
-  background: linear-gradient(90deg, #a8ff60 0%, #43b581 100%);
-  color: #16281d;
+  background: linear-gradient(90deg, #7EC34C 0%, #7EC34C 100%);
+  color: #23272a;
   border: none;
   padding: 0.7rem 1.5rem;
   border-radius: 8px;
@@ -75,8 +75,8 @@ header {
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .btn:hover {
-  background: linear-gradient(90deg, #43b581 0%, #a8ff60 100%);
-  color: #0e1a11;
+  background: linear-gradient(90deg, #7EC34C 0%, #a8ff60 100%);
+  color: #23272a;
   box-shadow: 0 4px 16px rgba(67,181,129,0.15);
 }
 .buttons {
@@ -123,7 +123,7 @@ header {
 }
 .sidebar {
   width: 200px;
-  background: #16281d;
+  background: #23272a;
   min-height: 100vh;
   padding-top: 2rem;
   position: fixed;
@@ -213,11 +213,11 @@ main {
   gap: 1rem;
   max-width: 400px;
   align-items: center;
-  background: #1e3a24;
+  background: #23272a;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(67,181,129,0.10);
   padding: 2rem 2.5rem;
-  border: 1.5px solid #a8ff60;
+  border: 1.5px solid #7EC34C;
 }
 #testForm label, #testForm select, #testForm textarea, #testForm button,
 #configForm label, #configForm select, #configForm textarea, #configForm button,
@@ -242,22 +242,22 @@ main {
   border-radius: 6px;
   border: none;
   padding: 0.5rem;
-  background: #a8ff60;
-  color: #16281d;
+  background: #7EC34C;
+  color: #23272a;
   font-weight: 600;
   margin-top: 0.5rem;
   transition: background 0.2s, color 0.2s;
 }
 #testForm button:hover, #configForm button:hover, #leaveForm button:hover {
-  background: #43b581;
-  color: #0e1a11;
+  background: #a8ff60;
+  color: #23272a;
 }
 .notification {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #43b581;
-  color: #fff;
+  background: #7EC34C;
+  color: #23272a;
   padding: 1rem 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -273,7 +273,7 @@ main {
 .config-display {
   background: #223c28;
   color: #eaffd0;
-  border: 1.5px solid #a8ff60;
+  border: 1.5px solid #7EC34C;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1em;
@@ -284,7 +284,7 @@ main {
   word-break: break-word;
 }
 .config-display b {
-  color: #a8ff60;
+  color: #7EC34C;
 }
 
 /* Responsive Design */
