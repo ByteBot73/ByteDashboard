@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const notification = document.getElementById('notification');
 
   // User info
-  const userRes = await fetch('https://thenewdashboard.onrender.com/api/user', { credentials: 'include' });
+  const userRes = await fetch('https://bytedashboard.onrender.com/api/user', { credentials: 'include' });
   const userData = await userRes.json();
   if (userData.user) {
     userAvatar.src = userData.user.avatar ? `https://cdn.discordapp.com/avatars/${userData.user.id}/${userData.user.avatar}.png` : '/default-avatar.png';
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'https://thenewdashboard.onrender.com/logout';
+    window.location.href = 'https://bytedashboard.onrender.com/logout';
   });
 
   // Get guild id from URL
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Fetch channels for this guild
-  const resChannels = await fetch(`https://thenewdashboard.onrender.com/api/guild/${guildId}/channels`);
+  const resChannels = await fetch(`https://bytedashboard.onrender.com/api/guild/${guildId}/channels`);
   const dataChannels = await resChannels.json();
   const channels = (dataChannels.channels || []).filter(c => c.type === 0); // Only text channels
   channelSelect.innerHTML = channels.length
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const channelId = channelSelect.value;
     const message = document.getElementById('testMessage').value;
-    const res = await fetch('https://thenewdashboard.onrender.com/api/send', {
+    const res = await fetch('https://bytedashboard.onrender.com/api/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guildId, channelId, message })

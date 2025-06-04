@@ -51,7 +51,7 @@ passport.use(new DiscordStrategy({
 // CORS middleware
 app.use(cors({
   origin: [
-    'https://thenewdashboard.onrender.com',
+    'https://bytedashboard.onrender.com',
     'http://localhost:3000'
   ],
   credentials: true
