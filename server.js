@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Fetch channels for this guild
-  const resChannels = await fetch(`https://thenewdashboard.onrender.com/api/guild/${guildId}/channels`);
+  const resChannels = await fetch(`https://thennewdashboard.onrender.com/api/guild/${guildId}/channels`);
   const dataChannels = await resChannels.json();
   const channels = (dataChannels.channels || []).filter(c => c.type === 0); // Only text channels
 
@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     testForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const now = Date.now();
-      if (now - lastTestSent < COOLDOWN_MS) {
+      // Only check cooldown if a message was actually sent successfully
+      if (lastTestSent && now - lastTestSent < COOLDOWN_MS) {
         showNotification('Sending too fast', true);
         return;
       }
-      lastTestSent = now;
       const channelId = channelSelect.value;
       const message = document.getElementById('testMessage').value;
       const res = await fetch('https://thennewdashboard.onrender.com/api/send', {
@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await res.json();
       if (data.success) {
+        lastTestSent = now;
         showNotification('Message sent successfully!');
         testForm.reset();
       } else {
