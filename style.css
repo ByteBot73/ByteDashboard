@@ -132,6 +132,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex-shrink: 0;
 }
 .sidebar .sidebar-section {
   margin-top: 32px;
@@ -182,17 +183,29 @@ header {
   font-size: 15px;
   transition: transform 0.2s;
 }
-#essentialsList {
+#essentialsList, #serverMgmtList {
   transition: height 0.2s;
 }
-.test-section, .config-section {
-  margin-left: 220px;
-  padding: 2rem;
+main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  min-height: 80vh;
+  align-items: flex-start;
+  min-height: 90vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+.test-section, .config-section {
+  margin: 32px 0 0 0;
+  background: #23272a;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  padding: 32px 32px 24px 32px;
+  min-width: 340px;
+  max-width: 420px;
+  width: 100%;
+  margin-left: 48px;
+  display: block;
 }
 #testForm, #configForm, #leaveForm {
   display: flex;
@@ -276,13 +289,19 @@ header {
 
 /* Responsive Design */
 @media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
   .sidebar {
-    width: 140px;
-    padding-top: 1rem;
+    width: 100vw;
+    margin-bottom: 24px;
   }
   .test-section, .config-section {
-    margin-left: 140px;
-    padding: 1rem;
+    margin-left: 0;
+    min-width: unset;
+    max-width: 98vw;
+    padding: 18px 6vw 18px 6vw;
   }
 }
 @media (max-width: 600px) {

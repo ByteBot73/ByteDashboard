@@ -21,15 +21,14 @@
       <div class="sidebar-section">
         <div class="sidebar-title sidebar-collapsible" id="essentialsToggle">ESSENTIALS <span class="sidebar-arrow" id="essentialsArrow">&#x25BC;</span></div>
         <ul id="essentialsList">
-          <li id="welcomeGoodbyeBtn"><span class="sidebar-icon">🖐️</span>Welcome & Goodbye</li>
-          <li id="welcomeBtn"><span class="sidebar-icon">🤝</span>Welcome Channel</li>
+          <li id="welcomeBtn"><span class="sidebar-icon">🤝</span>Welcome Message</li>
+          <li id="leaveBtn"><span class="sidebar-icon">👋</span>Leave Message</li>
         </ul>
       </div>
       <div class="sidebar-section">
-        <div class="sidebar-title">SERVER MANAGEMENT</div>
-        <ul>
+        <div class="sidebar-title sidebar-collapsible" id="serverMgmtToggle">SERVER MANAGEMENT <span class="sidebar-arrow" id="serverMgmtArrow">&#x25BC;</span></div>
+        <ul id="serverMgmtList">
           <li id="testBtn"><span class="sidebar-icon">🧪</span>Test Bot</li>
-          <li id="leaveBtn"><span class="sidebar-icon">👋</span>Leave Message</li>
         </ul>
       </div>
     </aside>
@@ -69,17 +68,21 @@
   </main>
   <script src="server.js"></script>
   <script>
-    // Sidebar collapse/expand logic
-    const essentialsToggle = document.getElementById('essentialsToggle');
-    const essentialsList = document.getElementById('essentialsList');
-    const essentialsArrow = document.getElementById('essentialsArrow');
-    if (essentialsToggle && essentialsList && essentialsArrow) {
-      essentialsToggle.addEventListener('click', () => {
-        const isOpen = essentialsList.style.display !== 'none';
-        essentialsList.style.display = isOpen ? 'none' : 'block';
-        essentialsArrow.innerHTML = isOpen ? '&#x25B6;' : '&#x25BC;';
-      });
+    // Sidebar collapse/expand logic for all sections
+    function setupCollapsibleSection(toggleId, listId, arrowId) {
+      const toggle = document.getElementById(toggleId);
+      const list = document.getElementById(listId);
+      const arrow = document.getElementById(arrowId);
+      if (toggle && list && arrow) {
+        toggle.addEventListener('click', () => {
+          const isOpen = list.style.display !== 'none';
+          list.style.display = isOpen ? 'none' : 'block';
+          arrow.innerHTML = isOpen ? '&#x25B6;' : '&#x25BC;';
+        });
+      }
     }
+    setupCollapsibleSection('essentialsToggle', 'essentialsList', 'essentialsArrow');
+    setupCollapsibleSection('serverMgmtToggle', 'serverMgmtList', 'serverMgmtArrow');
   </script>
 </body>
 </html>
