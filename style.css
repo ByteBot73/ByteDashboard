@@ -30,14 +30,14 @@ header {
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #403c3b;
+  border: 2px solid #36393F;
 }
 .dropdown {
   position: absolute;
   right: 0;
   top: 50px;
   background: #16281d;
-  border: 1px solid #403c3b;
+  border: 1px solid #36393F;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   z-index: 10;
@@ -164,7 +164,7 @@ header {
   background: #403c3b;
 }
 .sidebar li.active, .sidebar li:active {
-  background: #403c3b;
+  background: #36393F;
   color: #fff;
 }
 .sidebar li:hover:not(.active) {
@@ -216,7 +216,7 @@ main {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(67,181,129,0.10);
   padding: 2rem 2.5rem;
-  border: 1.5px solid #403c3b;
+  border: 1.5px solid #36393F;
 }
 #testForm label, #testForm select, #testForm textarea, #testForm button,
 #configForm label, #configForm select, #configForm textarea, #configForm button,
@@ -241,7 +241,7 @@ main {
   border-radius: 6px;
   border: none;
   padding: 0.5rem;
-  background: #403c3b;
+  background: #36393F;
   color: #fff;
   font-weight: 600;
   margin-top: 0.5rem;
@@ -255,7 +255,7 @@ main {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #403c3b;
+  background: #36393F;
   color: #fff;
   padding: 1rem 2rem;
   border-radius: 8px;
@@ -272,7 +272,7 @@ main {
 .config-display {
   background: #403c3b;
   color: #eaffd0;
-  border: 1.5px solid #403c3b;
+  border: 1.5px solid #36393F;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1em;
@@ -283,7 +283,7 @@ main {
   word-break: break-word;
 }
 .config-display b {
-  color: #7EC34C;
+  color: #fff;
 }
 
 /* Responsive Design */
