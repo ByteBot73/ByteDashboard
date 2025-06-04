@@ -123,7 +123,8 @@ app.get('/api/guild/:guildId/channels', async (req, res) => {
     });
     res.json({ channels: response.data });
   } catch (err) {
-    res.status(500).json({ channels: [] });
+    console.error('Error fetching channels:', err.response ? err.response.data : err.message);
+    res.status(500).json({ channels: [], error: err.response ? err.response.data : err.message });
   }
 });
 
