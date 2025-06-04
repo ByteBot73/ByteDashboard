@@ -96,11 +96,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     testForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const now = Date.now();
-      // Only check cooldown if a message was actually sent successfully
+      // Check cooldown BEFORE sending the request
       if (lastTestSent && now - lastTestSent < COOLDOWN_MS) {
         showNotification('Sending too fast', true);
         return;
       }
+      lastTestSent = now; // Set cooldown immediately on submit
       const channelId = channelSelect.value;
       const message = document.getElementById('testMessage').value;
       const res = await fetch(`${API_BASE}/api/send`, {
@@ -110,7 +111,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await res.json();
       if (data.success) {
-        lastTestSent = now;
         showNotification('Message sent successfully!');
         testForm.reset();
       } else {
