@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'https://thenewdashboard.onrender.com/logout';
+    window.location.href = 'https://thennewdashboard.onrender.com/logout';
   });
 
   // Sidebar navigation
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Fetch channels for this guild
-  const resChannels = await fetch(`https://thennewdashboard.onrender.com/api/guild/${guildId}/channels`);
+  const resChannels = await fetch(`https://thenewdashboard.onrender.com/api/guild/${guildId}/channels`);
   const dataChannels = await resChannels.json();
   const channels = (dataChannels.channels || []).filter(c => c.type === 0); // Only text channels
 
