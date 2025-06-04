@@ -6,6 +6,7 @@ const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const axios = require('axios');
 const mongoose = require('mongoose');
+const cors = require('cors');
 // Use the correct schema path for WelcomeConfig and LeaveConfig
 const WelcomeConfig = require('./schemas/welcomeConfig');
 const LeaveConfig = require('./schemas/leaveConfig');
@@ -45,6 +46,15 @@ passport.use(new DiscordStrategy({
   scope: ['identify', 'guilds']
 }, (accessToken, refreshToken, profile, done) => {
   process.nextTick(() => done(null, profile));
+}));
+
+// CORS middleware
+app.use(cors({
+  origin: [
+    'https://thenewdashboard.onrender.com',
+    'http://localhost:3000'
+  ],
+  credentials: true
 }));
 
 // Auth routes
