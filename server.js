@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const notification = document.getElementById('notification');
 
   // Replace all API URLs with the correct domain
-  const API_BASE = 'https://thennewdashboard.onrender.com';
+  const API_BASE = 'https://thenewdashboard.onrender.com';
 
   // User info
   const userRes = await fetch(`${API_BASE}/api/user`, { credentials: 'include' });
