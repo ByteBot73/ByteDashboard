@@ -2,14 +2,14 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  background: #242020;
-  color: #eaffd0;
+  background: #f4f4f7;
+  color: #23272a;
 }
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #242020;
+  background: #e3e4e8;
   padding: 1rem 2rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -17,7 +17,7 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #403c3b;
+  color: #36393F;
 }
 .user-menu, .header-buttons {
   position: relative;
@@ -30,22 +30,22 @@ header {
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #36393F;
+  border: 2px solid #d1d2d6;
 }
 .dropdown {
   position: absolute;
   right: 0;
   top: 50px;
-  background: #16281d;
-  border: 1px solid #36393F;
+  background: #f4f4f7;
+  border: 1px solid #d1d2d6;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   z-index: 10;
   min-width: 120px;
 }
 .dropdown button, .dropdown .btn {
-  background: #36393F;
-  color: #fff;
+  background: #d1d2d6;
+  color: #23272a;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -57,12 +57,12 @@ header {
   box-shadow: 0 2px 8px rgba(67,181,129,0.08);
 }
 .dropdown button:hover, .dropdown .btn:hover {
-  background: #36393F;
-  color: #fff;
+  background: #7EC34C;
+  color: #23272a;
 }
 .btn {
-  background: linear-gradient(90deg, #36393F 0%, #36393F 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #d1d2d6 0%, #e3e4e8 100%);
+  color: #23272a;
   border: none;
   padding: 0.7rem 1.5rem;
   border-radius: 8px;
@@ -75,9 +75,8 @@ header {
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .btn:hover {
-  background: linear-gradient(90deg, #36393F 0%, #a8ff60 100%);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(67,181,129,0.15);
+  background: #7EC34C;
+  color: #23272a;
 }
 .buttons {
   margin: 2rem 0;
@@ -96,7 +95,8 @@ header {
   margin-top: 2rem;
 }
 .guild-card {
-  background: #403c3b;
+  background: #f4f4f7;
+  border: 1.5px solid #d1d2d6;
   border-radius: 8px;
   padding: 1rem 2rem;
   min-width: 220px;
@@ -115,7 +115,7 @@ header {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: #36393F;
 }
 .guild-card .guild-btn {
   margin-top: 1rem;
@@ -123,7 +123,7 @@ header {
 }
 .sidebar {
   width: 200px;
-  background: #242020;
+  background: #e3e4e8;
   min-height: 100vh;
   padding-top: 2rem;
   position: fixed;
@@ -155,20 +155,20 @@ header {
   align-items: center;
   padding: 10px 24px;
   font-size: 16px;
-  color: #fff;
+  color: #23272a;
   border-radius: 6px;
   margin: 2px 8px;
   cursor: pointer;
   transition: background 0.15s;
   position: relative;
-  background: #403c3b;
+  background: #f4f4f7;
 }
 .sidebar li.active, .sidebar li:active {
-  background: #36393F;
-  color: #fff;
+  background: #d1d2d6;
+  color: #23272a;
 }
 .sidebar li:hover:not(.active) {
-  background: #7EC34C;
+  background: #bfc2c7;
   color: #23272a;
 }
 .sidebar .sidebar-collapsible {
@@ -212,7 +212,9 @@ main {
   gap: 1rem;
   max-width: 400px;
   align-items: center;
-  background: #403c3b;
+  background: #f4f4f7;
+  border: 1.5px solid #d1d2d6;
+  color: #23272a;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(67,181,129,0.10);
   padding: 2rem 2.5rem;
@@ -225,8 +227,8 @@ main {
   text-align: left;
 }
 #testForm textarea, #configForm textarea, #leaveForm textarea {
-  background: #36393F;
-  color: #fff;
+  background: #e3e4e8;
+  color: #23272a;
   min-height: 80px;
   resize: vertical;
   border-radius: 6px;
@@ -241,8 +243,8 @@ main {
   border-radius: 6px;
   border: none;
   padding: 0.5rem;
-  background: #36393F;
-  color: #fff;
+  background: #d1d2d6;
+  color: #23272a;
   font-weight: 600;
   margin-top: 0.5rem;
   transition: background 0.2s, color 0.2s;
@@ -255,8 +257,8 @@ main {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #36393F;
-  color: #fff;
+  background: #d1d2d6;
+  color: #23272a;
   padding: 1rem 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -270,9 +272,9 @@ main {
   to { opacity: 0.95; transform: translateY(0); }
 }
 .config-display {
-  background: #403c3b;
-  color: #eaffd0;
-  border: 1.5px solid #36393F;
+  background: #e3e4e8;
+  color: #23272a;
+  border: 1.5px solid #d1d2d6;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1em;
@@ -283,7 +285,7 @@ main {
   word-break: break-word;
 }
 .config-display b {
-  color: #fff;
+  color: #36393F;
 }
 
 /* Responsive Design */

@@ -9,22 +9,22 @@
 <body>
   <header>
     <div class="logo">Byte Dashboard</div>
-    <div class="header-buttons" id="headerButtons">
-      <a href="#" id="inviteBtn" class="btn">Invite Bot</a>
-      <a href="dashboard.html" class="btn">Dashboard</a>
-      <a href="https://bytedashboard.onrender.com/login" id="loginBtn" class="btn">Login with Discord</a>      <img src="default-avatar.png" id="userAvatar" class="avatar" style="display:none;">
+    <div class="user-menu" id="userMenu">
+      <img src="default-avatar.png" id="userAvatar" class="avatar" style="display:none;">
       <div class="dropdown" id="dropdownMenu" style="display:none;">
-        <button id="logoutBtn">Logout</button>
+        <button id="logoutBtn" class="btn">Logout</button>
       </div>
     </div>
   </header>
   <main>
-    <section class="home">
-      <h1>Welcome to the Discord Bot Dashboard!</h1>
-      <p>Manage your servers, test the bot, and more.</p>
-      <div class="bot-info">
-        <h2>About the Bot</h2>
-        <p>This bot helps you manage your Discord servers with ease. Use the dashboard to configure features and test the bot in your channels.</p>
+    <section class="bot-info">
+      <h1 style="color:#36393F;">About the Bot</h1>
+      <p style="color:#23272a;">This bot helps you manage your Discord servers with ease. Use the dashboard to configure features and test the bot in your channels.</p>
+    </section>
+    <section class="guild-list-section">
+      <h2 style="color:#36393F;">Your Servers</h2>
+      <div class="guild-list">
+        <!-- Guild cards will be rendered here by JS -->
       </div>
     </section>
   </main>
