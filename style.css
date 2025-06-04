@@ -44,8 +44,8 @@ header {
   min-width: 120px;
 }
 .dropdown button, .dropdown .btn {
-  background: #1e3a24;
-  color: #36393F;
+  background: #36393F;
+  color: #fff;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -57,8 +57,8 @@ header {
   box-shadow: 0 2px 8px rgba(67,181,129,0.08);
 }
 .dropdown button:hover, .dropdown .btn:hover {
-  background: #43b581;
-  color: #0e1a11;
+  background: #36393F;
+  color: #fff;
 }
 .btn {
   background: linear-gradient(90deg, #36393F 0%, #36393F 100%);
@@ -96,7 +96,7 @@ header {
   margin-top: 2rem;
 }
 .guild-card {
-  background: #1e3a24;
+  background: #403c3b;
   border-radius: 8px;
   padding: 1rem 2rem;
   min-width: 220px;
@@ -115,7 +115,7 @@ header {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: #a8ff60;
+  color: #fff;
 }
 .guild-card .guild-btn {
   margin-top: 1rem;
@@ -225,14 +225,14 @@ main {
   text-align: left;
 }
 #testForm textarea, #configForm textarea, #leaveForm textarea {
+  background: #36393F;
+  color: #fff;
   min-height: 80px;
   resize: vertical;
   border-radius: 6px;
   border: none;
   padding: 0.5rem;
   font-size: 1rem;
-  background: #16281d;
-  color: #eaffd0;
 }
 #testForm select, #testForm button,
 #configForm select, #configForm button,
