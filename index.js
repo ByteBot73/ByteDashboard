@@ -6,8 +6,9 @@ const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const axios = require('axios');
 const mongoose = require('mongoose');
-const WelcomeConfig = require('./welcomeConfig');
-const LeaveConfig = require('./leaveConfig');
+// Use the correct schema path for WelcomeConfig and LeaveConfig
+const WelcomeConfig = require('./schemas/welcomeConfig');
+const LeaveConfig = require('./schemas/leaveConfig');
 
 const app = express();
 
