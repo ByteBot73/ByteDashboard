@@ -17,7 +17,7 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #7EC34C;
+  color: #36393F;
 }
 .user-menu, .header-buttons {
   position: relative;
@@ -30,14 +30,14 @@ header {
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #7EC34C;
+  border: 2px solid #36393F;
 }
 .dropdown {
   position: absolute;
   right: 0;
   top: 50px;
   background: #16281d;
-  border: 1px solid #7EC34C;
+  border: 1px solid #36393F;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   z-index: 10;
@@ -45,7 +45,7 @@ header {
 }
 .dropdown button, .dropdown .btn {
   background: #1e3a24;
-  color: #7EC34C;
+  color: #36393F;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -61,8 +61,8 @@ header {
   color: #0e1a11;
 }
 .btn {
-  background: linear-gradient(90deg, #7EC34C 0%, #7EC34C 100%);
-  color: #23272a;
+  background: linear-gradient(90deg, #36393F 0%, #36393F 100%);
+  color: #fff;
   border: none;
   padding: 0.7rem 1.5rem;
   border-radius: 8px;
@@ -75,8 +75,8 @@ header {
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .btn:hover {
-  background: linear-gradient(90deg, #7EC34C 0%, #a8ff60 100%);
-  color: #23272a;
+  background: linear-gradient(90deg, #36393F 0%, #a8ff60 100%);
+  color: #fff;
   box-shadow: 0 4px 16px rgba(67,181,129,0.15);
 }
 .buttons {
@@ -217,7 +217,7 @@ main {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(67,181,129,0.10);
   padding: 2rem 2.5rem;
-  border: 1.5px solid #7EC34C;
+  border: 1.5px solid #36393F;
 }
 #testForm label, #testForm select, #testForm textarea, #testForm button,
 #configForm label, #configForm select, #configForm textarea, #configForm button,
@@ -242,8 +242,8 @@ main {
   border-radius: 6px;
   border: none;
   padding: 0.5rem;
-  background: #7EC34C;
-  color: #23272a;
+  background: #36393F;
+  color: #fff;
   font-weight: 600;
   margin-top: 0.5rem;
   transition: background 0.2s, color 0.2s;
@@ -256,8 +256,8 @@ main {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #7EC34C;
-  color: #23272a;
+  background: #36393F;
+  color: #fff;
   padding: 1rem 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -273,7 +273,7 @@ main {
 .config-display {
   background: #223c28;
   color: #eaffd0;
-  border: 1.5px solid #7EC34C;
+  border: 1.5px solid #36393F;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1em;
@@ -284,7 +284,7 @@ main {
   word-break: break-word;
 }
 .config-display b {
-  color: #7EC34C;
+  color: #36393F;
 }
 
 /* Responsive Design */
