@@ -161,7 +161,7 @@ header {
   transition: background 0.15s;
   position: relative;
 }
-.sidebar li.active, .sidebar li:hover {
+.sidebar li.active, .sidebar li:active {
   background: #2ecc40;
   color: #fff;
 }
@@ -171,19 +171,19 @@ header {
   width: 22px;
   text-align: center;
 }
-.sidebar li .sidebar-crown {
-  margin-left: auto;
-  background: #f9d47a;
-  color: #b8860b;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
+.sidebar .sidebar-collapsible {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  user-select: none;
+}
+.sidebar-arrow {
+  margin-left: 8px;
   font-size: 15px;
-  font-weight: bold;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+#essentialsList {
+  transition: height 0.2s;
 }
 .test-section, .config-section {
   margin-left: 220px;

@@ -19,13 +19,10 @@
   <main>
     <aside class="sidebar">
       <div class="sidebar-section">
-        <div class="sidebar-title">ESSENTIALS</div>
-        <ul>
-          <li id="welcomeGoodbyeBtn" class="active"><span class="sidebar-icon">🖐️</span>Welcome & Goodbye <span class="sidebar-crown">👑</span></li>
-          <li id="welcomeBtn"><span class="sidebar-icon">🤝</span>Welcome Channel <span class="sidebar-crown">👑</span></li>
-          <li id="reactionRolesBtn"><span class="sidebar-icon">💡</span>Reaction Roles <span class="sidebar-crown">👑</span></li>
-          <li id="moderatorBtn"><span class="sidebar-icon">🛠️</span>Moderator <span class="sidebar-crown">👑</span></li>
-          <li id="levelsBtn"><span class="sidebar-icon">🏆</span>Levels <span class="sidebar-crown">👑</span></li>
+        <div class="sidebar-title sidebar-collapsible" id="essentialsToggle">ESSENTIALS <span class="sidebar-arrow" id="essentialsArrow">&#x25BC;</span></div>
+        <ul id="essentialsList">
+          <li id="welcomeGoodbyeBtn"><span class="sidebar-icon">🖐️</span>Welcome & Goodbye</li>
+          <li id="welcomeBtn"><span class="sidebar-icon">🤝</span>Welcome Channel</li>
         </ul>
       </div>
       <div class="sidebar-section">
@@ -71,5 +68,18 @@
     <div id="notification" class="notification" style="display:none;"></div>
   </main>
   <script src="server.js"></script>
+  <script>
+    // Sidebar collapse/expand logic
+    const essentialsToggle = document.getElementById('essentialsToggle');
+    const essentialsList = document.getElementById('essentialsList');
+    const essentialsArrow = document.getElementById('essentialsArrow');
+    if (essentialsToggle && essentialsList && essentialsArrow) {
+      essentialsToggle.addEventListener('click', () => {
+        const isOpen = essentialsList.style.display !== 'none';
+        essentialsList.style.display = isOpen ? 'none' : 'block';
+        essentialsArrow.innerHTML = isOpen ? '&#x25B6;' : '&#x25BC;';
+      });
+    }
+  </script>
 </body>
 </html>
