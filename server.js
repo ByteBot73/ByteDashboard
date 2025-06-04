@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!userMenu.contains(e.target)) dropdownMenu.style.display = 'none';
   });
   logoutBtn.addEventListener('click', () => {
-    window.location.href = 'https://thennewdashboard.onrender.com/logout';
+    window.location.href = 'https://bytedashboard.onrender.com/logout';
   });
 
   // Sidebar navigation
