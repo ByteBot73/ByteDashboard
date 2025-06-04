@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Fetch channels for this guild
-  const resChannels = await fetch(`https://thenewdashboard.onrender.com/api/guild/${guildId}/channels`);
+  const resChannels = await fetch(`https://thennewdashboard.onrender.com/api/guild/${guildId}/channels`);
   const dataChannels = await resChannels.json();
   const channels = (dataChannels.channels || []).filter(c => c.type === 0); // Only text channels
 
@@ -86,12 +86,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Test the Bot form
   const testForm = document.getElementById('testForm');
+  // Add cooldown for test message
+  let lastTestSent = 0;
+  const COOLDOWN_MS = 5000;
   if (testForm) {
     testForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const now = Date.now();
+      if (now - lastTestSent < COOLDOWN_MS) {
+        showNotification('Sending too fast', true);
+        return;
+      }
+      lastTestSent = now;
       const channelId = channelSelect.value;
       const message = document.getElementById('testMessage').value;
-      const res = await fetch('https://thenewdashboard.onrender.com/api/send', {
+      const res = await fetch('https://thennewdashboard.onrender.com/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ guildId, channelId, message })
@@ -109,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Welcome config
   const configForm = document.getElementById('configForm');
   function loadWelcomeConfig() {
-    fetch(`https://thenewdashboard.onrender.com/api/welcome-config/${guildId}`)
+    fetch(`https://thennewdashboard.onrender.com/api/welcome-config/${guildId}`)
       .then(r => r.json())
       .then(data => {
         const current = document.getElementById('currentWelcomeConfig');
@@ -146,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Leave config
   const leaveForm = document.getElementById('leaveForm');
   function loadLeaveConfig() {
-    fetch(`https://thenewdashboard.onrender.com/api/leave-config/${guildId}`)
+    fetch(`https://thennewdashboard.onrender.com/api/leave-config/${guildId}`)
       .then(r => r.json())
       .then(data => {
         const current = document.getElementById('currentLeaveConfig');
@@ -163,7 +172,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
       const channelId = leaveChannelSelect.value;
       const message = document.getElementById('leaveMessage').value;
-      const res = await fetch('https://thenewdashboard.onrender.com/api/leave-config', {
+      const res = await fetch('https://thennewdashboard.onrender.com/api/leave-config', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ guildId, channelId, message })

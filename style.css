@@ -2,63 +2,88 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  background: #23272a;
-  color: #fff;
+  background: #16281d; /* dark green background */
+  color: #eaffd0; /* light lime text */
 }
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #2c2f33;
+  background: #1e3a24; /* darker green */
   padding: 1rem 2rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* test */
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
+  color: #a8ff60;
 }
-.user-menu {
+.user-menu, .header-buttons {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #7289da;
+  border: 2px solid #a8ff60;
 }
 .dropdown {
   position: absolute;
   right: 0;
   top: 50px;
-  background: #23272a;
-  border: 1px solid #7289da;
+  background: #16281d;
+  border: 1px solid #a8ff60;
   border-radius: 8px;
   padding: 0.5rem 1rem;
   z-index: 10;
+  min-width: 120px;
+}
+.dropdown button, .dropdown .btn {
+  background: #1e3a24;
+  color: #a8ff60;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(67,181,129,0.08);
+}
+.dropdown button:hover, .dropdown .btn:hover {
+  background: #43b581;
+  color: #0e1a11;
 }
 .btn {
-  background: #7289da;
-  color: #fff;
+  background: linear-gradient(90deg, #a8ff60 0%, #43b581 100%);
+  color: #16281d;
   border: none;
   padding: 0.7rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   margin: 0.5rem;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(67,181,129,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .btn:hover {
-  background: #5b6eae;
+  background: linear-gradient(90deg, #43b581 0%, #a8ff60 100%);
+  color: #0e1a11;
+  box-shadow: 0 4px 16px rgba(67,181,129,0.15);
 }
 .buttons {
   margin: 2rem 0;
 }
 .bot-info {
-  background: #2c2f33;
+  background: #1e3a24;
   padding: 1rem;
   border-radius: 8px;
   margin-top: 2rem;
@@ -70,19 +95,8 @@ header {
   gap: 1.5rem;
   margin-top: 2rem;
 }
-.header-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.header-buttons .btn {
-  margin: 0 0.2rem;
-}
-.header-buttons .avatar {
-  margin-left: 0.5rem;
-}
 .guild-card {
-  background: #2c2f33;
+  background: #1e3a24;
   border-radius: 8px;
   padding: 1rem 2rem;
   min-width: 220px;
@@ -101,6 +115,7 @@ header {
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  color: #a8ff60;
 }
 .guild-card .guild-btn {
   margin-top: 1rem;
@@ -108,7 +123,7 @@ header {
 }
 .sidebar {
   width: 200px;
-  background: #23272a;
+  background: #16281d;
   min-height: 100vh;
   padding-top: 2rem;
   position: fixed;
@@ -120,7 +135,7 @@ header {
 }
 .sidebar-btn {
   background: none;
-  color: #fff;
+  color: #eaffd0;
   border: none;
   padding: 1rem 2rem;
   text-align: left;
@@ -128,52 +143,14 @@ header {
   cursor: pointer;
   text-decoration: none;
   border-left: 4px solid transparent;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .sidebar-btn.active, .sidebar-btn:hover {
-  background: #2c2f33;
-  border-left: 4px solid #7289da;
+  background: #1e3a24;
+  border-left: 4px solid #a8ff60;
+  color: #a8ff60;
 }
-.test-section {
-  margin-left: 180px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-}
-#testForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  align-items: center;
-  background: #2c2f33;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  padding: 2rem 2.5rem;
-  border: 1.5px solid #7289da;
-}
-#testForm label, #testForm select, #testForm textarea, #testForm button {
-  width: 100%;
-  text-align: left;
-}
-#testForm textarea {
-  min-height: 80px;
-  resize: vertical;
-  border-radius: 6px;
-  border: none;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-#testForm select, #testForm button {
-  font-size: 1rem;
-  border-radius: 6px;
-  border: none;
-  padding: 0.5rem;
-}
-.config-section {
+.test-section, .config-section {
   margin-left: 220px;
   padding: 2rem;
   display: flex;
@@ -182,65 +159,50 @@ header {
   justify-content: center;
   min-height: 80vh;
 }
-#configForm {
+#testForm, #configForm, #leaveForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 400px;
   align-items: center;
-  background: #2c2f33;
+  background: #1e3a24;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(67,181,129,0.10);
   padding: 2rem 2.5rem;
-  border: 1.5px solid #7289da;
+  border: 1.5px solid #a8ff60;
 }
-#configForm label, #configForm select, #configForm textarea, #configForm button {
-  width: 100%;
-  text-align: left;
-}
-#configForm textarea {
-  min-height: 80px;
-  resize: vertical;
-  border-radius: 6px;
-  border: none;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-#configForm select, #configForm button {
-  font-size: 1rem;
-  border-radius: 6px;
-  border: none;
-  padding: 0.5rem;
-}
-#leaveForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  align-items: center;
-  background: #2c2f33;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  padding: 2rem 2.5rem;
-  border: 1.5px solid #7289da;
-}
+#testForm label, #testForm select, #testForm textarea, #testForm button,
+#configForm label, #configForm select, #configForm textarea, #configForm button,
 #leaveForm label, #leaveForm select, #leaveForm textarea, #leaveForm button {
   width: 100%;
   text-align: left;
 }
-#leaveForm textarea {
+#testForm textarea, #configForm textarea, #leaveForm textarea {
   min-height: 80px;
   resize: vertical;
   border-radius: 6px;
   border: none;
   padding: 0.5rem;
   font-size: 1rem;
+  background: #16281d;
+  color: #eaffd0;
 }
+#testForm select, #testForm button,
+#configForm select, #configForm button,
 #leaveForm select, #leaveForm button {
   font-size: 1rem;
   border-radius: 6px;
   border: none;
   padding: 0.5rem;
+  background: #a8ff60;
+  color: #16281d;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+#testForm button:hover, #configForm button:hover, #leaveForm button:hover {
+  background: #43b581;
+  color: #0e1a11;
 }
 .notification {
   position: fixed;
@@ -259,4 +221,69 @@ header {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 0.95; transform: translateY(0); }
+}
+.config-display {
+  background: #223c28;
+  color: #eaffd0;
+  border: 1.5px solid #a8ff60;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1em;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(67,181,129,0.10);
+  word-break: break-word;
+}
+.config-display b {
+  color: #a8ff60;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 140px;
+    padding-top: 1rem;
+  }
+  .test-section, .config-section {
+    margin-left: 140px;
+    padding: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .sidebar {
+    position: static;
+    width: 100%;
+    flex-direction: row;
+    gap: 0.5rem;
+    min-height: unset;
+    top: unset;
+    left: unset;
+    padding: 0.5rem 0;
+    background: #1e3a24;
+  }
+  .sidebar-btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+  .sidebar-btn.active, .sidebar-btn:hover {
+    border-left: none;
+    border-bottom: 3px solid #a8ff60;
+  }
+  .test-section, .config-section {
+    margin-left: 0;
+    padding: 1rem 0.5rem;
+    min-height: unset;
+  }
+  #testForm, #configForm, #leaveForm {
+    max-width: 100%;
+    padding: 1rem;
+  }
 }
