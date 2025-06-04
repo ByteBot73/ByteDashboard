@@ -13,8 +13,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const leaveSection = document.getElementById('leaveSection');
   const notification = document.getElementById('notification');
 
+  // Replace all API URLs with the correct domain
+  const API_BASE = 'https://thennewdashboard.onrender.com';
+
   // User info
-  const userRes = await fetch('https://thenewdashboard.onrender.com/api/user', { credentials: 'include' });
+  const userRes = await fetch(`${API_BASE}/api/user`, { credentials: 'include' });
   const userData = await userRes.json();
   if (userData.user) {
     userAvatar.src = userData.user.avatar ? `https://cdn.discordapp.com/avatars/${userData.user.id}/${userData.user.avatar}.png` : '/default-avatar.png';
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Fetch channels for this guild
-  const resChannels = await fetch(`https://thennewdashboard.onrender.com/api/guild/${guildId}/channels`);
+  const resChannels = await fetch(`${API_BASE}/api/guild/${guildId}/channels`);
   const dataChannels = await resChannels.json();
   const channels = (dataChannels.channels || []).filter(c => c.type === 0); // Only text channels
 
@@ -100,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       const channelId = channelSelect.value;
       const message = document.getElementById('testMessage').value;
-      const res = await fetch('https://thennewdashboard.onrender.com/api/send', {
+      const res = await fetch(`${API_BASE}/api/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ guildId, channelId, message })
@@ -119,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Welcome config
   const configForm = document.getElementById('configForm');
   function loadWelcomeConfig() {
-    fetch(`https://thennewdashboard.onrender.com/api/welcome-config/${guildId}`)
+    fetch(`${API_BASE}/api/welcome-config/${guildId}`)
       .then(r => r.json())
       .then(data => {
         const current = document.getElementById('currentWelcomeConfig');
@@ -136,7 +139,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
       const channelId = welcomeChannelSelect.value;
       const message = document.getElementById('welcomeMessage').value;
-      const res = await fetch('https://thennewdashboard.onrender.com/api/welcome-config', {
+      const res = await fetch(`${API_BASE}/api/welcome-config`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ guildId, channelId, message })
@@ -156,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Leave config
   const leaveForm = document.getElementById('leaveForm');
   function loadLeaveConfig() {
-    fetch(`https://thennewdashboard.onrender.com/api/leave-config/${guildId}`)
+    fetch(`${API_BASE}/api/leave-config/${guildId}`)
       .then(r => r.json())
       .then(data => {
         const current = document.getElementById('currentLeaveConfig');
@@ -173,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.preventDefault();
       const channelId = leaveChannelSelect.value;
       const message = document.getElementById('leaveMessage').value;
-      const res = await fetch('https://thennewdashboard.onrender.com/api/leave-config', {
+      const res = await fetch(`${API_BASE}/api/leave-config`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ guildId, channelId, message })
