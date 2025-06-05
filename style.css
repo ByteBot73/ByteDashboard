@@ -318,23 +318,6 @@ main {
     color: #fff !important;
 }
 
-/* Remove any remaining green backgrounds from cards or containers */
-.card, .guild-card, .dashboard-section, .sidebar {
-    background: #f5f5f5 !important;
-    color: #232323 !important;
-}
-
-/* Ensure sidebar and all cards use only grey backgrounds by default */
-.sidebar {
-    background: #ededed !important;
-}
-
-/* Remove any green border or box-shadow if present */
-.bot-info, .logout-container, .card, .guild-card {
-    border: none !important;
-    box-shadow: none !important;
-}
-
 /* Responsive Design */
 @media (max-width: 900px) {
   main {
